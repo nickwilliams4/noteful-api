@@ -9,7 +9,9 @@ const notesRouter = require('./notes/notes-router')
 
 const app = express()
 
-app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common'))
+app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
+  skip: () => NODE_ENV === 'test'
+}))
 app.use(cors())
 app.use(helmet())
 
