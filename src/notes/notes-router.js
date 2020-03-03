@@ -24,17 +24,15 @@ notesRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-    const { title, content, folder_id, date_published } = req.body
+    const { title, content, folder_id } = req.body
     console.log("POST TO /NOTES")
-    const newNote = { title, content, folder_id }
+    const newNote = { title, content, folders: folder_id }
 
     for (const [key, value] of Object.entries(newNote))
       if (value == null)
         return res.status(400).json({
           error: { message: `Missing '${key}' in request body` }
         })
-
-    newNote.date_published = date_published;
 
     NotesService.insertNote(
       req.app.get('db'),
