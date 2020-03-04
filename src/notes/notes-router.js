@@ -25,9 +25,9 @@ notesRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-    const { title, content } = req.body
+    const { title, content, folder_id } = req.body
     console.log("POST TO /NOTES")
-    const newNote = { title, content }
+    const newNote = { title, content, folder_id }
 
     for (const [key, value] of Object.entries(newNote))
       if (value == null)
