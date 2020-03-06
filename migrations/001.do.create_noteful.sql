@@ -1,4 +1,4 @@
-TRUNCATE folders, notes RESTART IDENTITY CASCADE; 
+TRUNCATE folders, notes; 
 
 DROP TABLE IF EXISTS folders;
 DROP TABLE IF EXISTS notes;
